@@ -1,6 +1,5 @@
 import React from 'react'
-import { TopImage } from '../components/TopImage'
-
+import { TopImage } from '../../components/TopImage'
 
 export const SobreNosotros = () => {
   return (

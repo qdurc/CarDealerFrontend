@@ -39,7 +39,7 @@ export const ContactForm = () => {
   return (
     <>
       <h1 className="mb-4 text-center">
-        <b>CONTÁCTANOS</b>
+        <b>Contáctanos</b>
       </h1>
       <form onSubmit={handleSubmit}>
         <div className="row">
@@ -97,7 +97,7 @@ export const ContactForm = () => {
           ></textarea>
         </div>
         <div className="col text-center">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary mt-2">
             Enviar
           </button>
         </div>

@@ -1,27 +1,25 @@
-import { Navbar } from './components/Navbar'
-import { Portada } from './Pages/Portada'
 import "/src/App.css"
-import { Footer } from './components/Footer'
-import { Routes, Route } from "react-router-dom"
-import { SobreNosotros } from './Pages/SobreNosotros'
-import { Inventario } from './Pages/Inventario'
-import { Contacto } from './Pages/Contacto'
+import { Routes, Route} from "react-router-dom"
+import { Login } from './Pages/Login'
+import { RouterApp } from './routes/RouterApp'
+import { ProtectedRoutes } from "./routes/ProtectedRoutes"
+import { AdminPanel } from "./Pages/AdminPanel"
 
 function App() {
   return(
     <>
 
-        <Navbar/>
-
         <Routes>
-          <Route path='/Portada' element={<Portada/>}/>
-          <Route path='/Sobre Nosotros' element={<SobreNosotros/>}/>
-          <Route path='/Inventario' element={<Inventario/>}/>
-          <Route path='/Contacto' element={<Contacto/>}/>
+          <Route path='/AdminPanel' element=
+          {
+            <ProtectedRoutes>
+              <AdminPanel/>
+            </ProtectedRoutes>
+          }/>
+          <Route path='/*' element={<RouterApp/>}/>
+          <Route path='/Login' element={<Login/>}/>
         </Routes>
-
-
-        <Footer/>
+      
         
     </>
   )

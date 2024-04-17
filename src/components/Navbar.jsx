@@ -11,7 +11,7 @@ export const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-      <div className="container-fluid">
+      <div className="container-fluid navbarcss">
         {/* Logo */}
 
         <Link to="/" className="navbar-brand">
@@ -45,7 +45,7 @@ export const Navbar = () => {
         >
           <ul className="navbar-nav nav-underline me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link to="/Portada" className="nav-link">
+              <Link to="/" className="nav-link">
                 Portada
               </Link>
             </li>
