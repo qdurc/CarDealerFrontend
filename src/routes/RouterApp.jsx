@@ -18,10 +18,12 @@ export const RouterApp = () => {
     <>
         <Navbar/>
             <Routes>
+
                 <Route path='/' element={<Portada/>}/>
                 <Route path='/Sobre Nosotros' element={<SobreNosotros/>}/>
                 <Route path='/Inventario' element={<Inventario/>}/>
                 <Route path='/Contacto' element={<Contacto/>}/>
+
             </Routes>
         <Footer/>
 

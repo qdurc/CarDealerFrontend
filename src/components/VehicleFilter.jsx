@@ -1,19 +1,12 @@
 import React, { useState } from 'react'
 import { VehicleCard } from './VehicleCard';
 import { Filter } from './Filter';
+import vehicles from '../utilities/cars';
 
 export const VehicleFilter = () => {
 
-    const vehicles = [
-        { id: 1,condition: 'Nuevo', brand: 'Toyota', model: 'Corolla', year: 2022 },
-        { id: 4, condition: 'Nuevo', brand: 'Toyota', model: 'Vit', year: 2022 },
-        { id: 2, condition: 'Usado', brand: 'Honda', model: 'Civic', year: 2019 },
-        { id: 3, condition: 'Nuevo', brand: 'Ford', model: 'Mustang', year: 2021 },
-        { id: 6, condition: 'Nuevo', brand: 'Ford', model: 'Mustang', year: 2021 },
-      ];
-    
-    const brands = [...new Set(vehicles.map(vehicle => vehicle.brand))];
-    const models = [...new Set(vehicles.map(vehicle => vehicle.model))];
+    const brands = [...new Set(vehicles.map(vehicle => vehicle.modelName))];
+    const models = [...new Set(vehicles.map(vehicle => vehicle.brandName))];
 
     const [conditionFilter, setConditionFilter] = useState('');
     const [brandFilter, setBrandFilter] = useState('');
@@ -40,8 +33,8 @@ export const VehicleFilter = () => {
 
     const filteredVehicles = vehicles.filter(vehicle => 
         (!conditionFilter || vehicle.condition === conditionFilter) &&
-        (!brandFilter || vehicle.brand === brandFilter) &&
-        (!modelFilter || vehicle.model === modelFilter)
+        (!brandFilter || vehicle.brandName === brandFilter) &&
+        (!modelFilter || vehicle.modelName === modelFilter)
       );
 
   return (
@@ -60,7 +53,7 @@ export const VehicleFilter = () => {
             vehicles={vehicles}
         />
 
-        <div className="row">
+        <div className="row" style={{ minHeight: '40vh'}}>
             {filteredVehicles.length > 0 ? (
             filteredVehicles.map(vehicle => (
                 <VehicleCard key={vehicle.id} vehicle={vehicle} />

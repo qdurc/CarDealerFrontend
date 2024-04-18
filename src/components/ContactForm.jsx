@@ -19,7 +19,7 @@ export const ContactForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("URL_DE_TU_API", {
+      const response = await fetch("https://localhost:7003/api/Contacts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,9 +38,7 @@ export const ContactForm = () => {
 
   return (
     <>
-      <h1 className="mb-4 text-center">
-        <b>Contáctanos</b>
-      </h1>
+      <h1 className="mb-4 text-center">Contáctanos</h1>
       <form onSubmit={handleSubmit}>
         <div className="row">
           <div className="col-md-6 mb-3">

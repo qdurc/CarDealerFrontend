@@ -16,9 +16,9 @@ export const Navbar = () => {
 
         <Link to="/" className="navbar-brand">
           <img
-            src="src\img\logo.jpg"
+            src="src\img\Screenshot 2024-04-11 193014.png"
             alt="Logo"
-            width="150"
+            width="250"
             height="100"
             className="d-inline-block align-text-top"
           />
@@ -43,7 +43,7 @@ export const Navbar = () => {
           className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}
           id="navbarText"
         >
-          <ul className="navbar-nav nav-underline me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav nav-underline text-center me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link to="/" className="nav-link">
                 Portada

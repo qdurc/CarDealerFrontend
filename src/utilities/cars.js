@@ -1,0 +1,136 @@
+
+const vehicleList = [
+    {
+        "id": 1,
+        "modelName": "Hummer",
+        "brandName": "H3",
+        "year": 2009,
+        "color": "Khaki",
+        "price": 11860,
+        "condition": "Casi Nuevo",
+        "mileage": 3180,
+        "transmission": "Automática",
+        "traction": "Delantera",
+        "description": "Nullam sit amet turpis elementum ligula vehicula consequat.",
+        "doors": 4
+    }, {
+        "id": 2,
+        "modelName": "Dodge",
+        "brandName": "Neon",
+        "year": 1997,
+        "color": "Puce",
+        "price": 6271,
+        "condition": "Usado",
+        "mileage": 9774,
+        "transmission": "Automática",
+        "traction": "Trasera o Total",
+        "description": "Aenean fermentum. Donec ut mauris eget massa tempor convallis.",
+        "doors": 4
+    }, {
+        "id": 3,
+        "modelName": "Volkswagen",
+        "brandName": "Routan",
+        "year": 2010,
+        "color": "Red",
+        "price": 7305,
+        "condition": "Nuevo",
+        "mileage": 9487,
+        "transmission": "Automática",
+        "traction": "Delantera",
+        "description": "Nullam varius. Nulla facilisi.",
+        "doors": 2
+    }, {
+        "id": 4,
+        "modelName": "Jeep",
+        "brandName": "Cherokee",
+        "year": 1998,
+        "color": "Orange",
+        "price": 6852,
+        "condition": "Usado",
+        "mileage": 2754,
+        "transmission": "Automática",
+        "traction": "Delantera",
+        "description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio.",
+        "doors": 3
+    }, {
+        "id": 5,
+        "modelName": "Lexus",
+        "brandName": "IS",
+        "year": 2009,
+        "color": "Maroon",
+        "price": 9335,
+        "condition": "Nuevo",
+        "mileage": 2413,
+        "transmission": "Automática",
+        "traction": "Trasera o Total",
+        "description": "Nunc rhoncus dui vel sem. Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.",
+        "doors": 2
+    }, {
+        "id": 6,
+        "modelName": "Hummer",
+        "brandName": "H2 SUT",
+        "year": 2006,
+        "color": "Goldenrod",
+        "price": 8445,
+        "condition": "Usado",
+        "mileage": 4891,
+        "transmission": "Manual",
+        "traction": "Delantera",
+        "description": "Vestibulum rutrum rutrum neque.",
+        "doors": 4
+    }, {
+        "id": 7,
+        "modelName": "Mercedes-Benz",
+        "brandName": "SLK55 AMG",
+        "year": 2009,
+        "color": "Orange",
+        "price": 8949,
+        "condition": "Casi Nuevo",
+        "mileage": 7394,
+        "transmission": "Automática",
+        "traction": "Delantera",
+        "description": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.",
+        "doors": 3
+    }, {
+        "id": 8,
+        "modelName": "Mitsubishi",
+        "brandName": "Eclipse",
+        "year": 1998,
+        "color": "Goldenrod",
+        "price": 14222,
+        "condition": "Nuevo",
+        "mileage": 5762,
+        "transmission": "Automática",
+        "traction": "Trasera o Total",
+        "description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis.",
+        "doors": 3
+    }, {
+        "id": 9,
+        "modelName": "Lexus",
+        "brandName": "LS",
+        "year": 2001,
+        "color": "Crimson",
+        "price": 9457,
+        "condition": "Nuevo",
+        "mileage": 4288,
+        "transmission": "Automática",
+        "traction": "Delantera",
+        "description": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+        "doors": 3
+    }, {
+        "id": 10,
+        "modelName": "Ford",
+        "brandName": "LTD",
+        "year": 1984,
+        "color": "Mauv",
+        "price": 5486,
+        "condition": "Casi Nuevo",
+        "mileage": 2064,
+        "transmission": "Automática",
+        "traction": "Trasera o Total",
+        "description": "Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim.",
+        "doors": 3
+    }
+];
+
+export default vehicleList;
