@@ -1,11 +1,13 @@
+import axios from "axios";
 import React, { useState } from "react";
+import Swal from 'sweetalert2';
 
 export const ContactForm = () => {
   const [formData, setFormData] = useState({
-    nombre: "",
-    apellido: "",
+    name: "",
+    phone: "",
     email: "",
-    mensaje: "",
+    message: "",
   });
 
   const handleChange = (e) => {
@@ -19,16 +21,24 @@ export const ContactForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://localhost:7003/api/Contacts", {
-        method: "POST",
+      const response = await axios.post("http://localhost:5075/api/Contacts", formData, {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
       });
-      if (response.ok) {
+      if (response.status === 200) {
+        Swal.fire({
+          icon: 'success',
+          title: '¡Mensaje enviado!',
+          text: 'Tu mensaje ha sido enviado correctamente. Nos pondremos en contacto contigo pronto.',
+        });
         console.log("Formulario enviado exitosamente");
       } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo más tarde.',
+        });
         console.error("Error al enviar el formulario");
       }
     } catch (error) {
@@ -42,28 +52,28 @@ export const ContactForm = () => {
       <form onSubmit={handleSubmit}>
         <div className="row">
           <div className="col-md-6 mb-3">
-            <label htmlFor="nombre" className="form-label">
+            <label htmlFor="name" className="form-label">
               Nombre
             </label>
             <input
               type="text"
               className="form-control"
-              id="nombre"
-              name="nombre"
-              value={formData.nombre}
+              id="name"
+              name="name"
+              value={formData.name}
               onChange={handleChange}
             />
           </div>
           <div className="col-md-6 mb-3">
-            <label htmlFor="apellido" className="form-label">
-              Apellido
+            <label htmlFor="phone" className="form-label">
+              Teléfono
             </label>
             <input
               type="text"
               className="form-control"
-              id="apellido"
-              name="apellido"
-              value={formData.apellido}
+              id="phone"
+              name="phone"
+              value={formData.phone}
               onChange={handleChange}
             />
           </div>
@@ -82,15 +92,15 @@ export const ContactForm = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="mensaje" className="form-label">
+          <label htmlFor="message" className="form-label">
             Mensaje
           </label>
           <textarea
             className="form-control"
-            id="mensaje"
-            name="mensaje"
+            id="message"
+            name="message"
             rows="4"
-            value={formData.mensaje}
+            value={formData.message}
             onChange={handleChange}
           ></textarea>
         </div>

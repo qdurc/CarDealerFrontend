@@ -10,7 +10,7 @@ export const Inventario = () => {
       <div className="container mt-4">
         <h2 className="mb-4">Lista de Vehículos</h2>
         <div className="row">
-          <VehicleFilter />
+          <VehicleCard />
         </div>
       </div>
     </>

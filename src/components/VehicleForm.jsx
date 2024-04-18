@@ -15,17 +15,11 @@ export const VehicleForm = ({ onSubmit, vehicleToEdit }) => {
     doors: vehicleToEdit ? vehicleToEdit.doors : "",
   });
 
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleFileInputChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-  };
-
   const handleUpload = (id) => {
     const formData = new FormData();
     formData.append('image', selectedFile);
 
-    axios.post(`https://localhost:7003/api/Images/${id}/images`, formData, {
+    axios.post(`http://localhost:5075/api/Images/${id}/images`, formData, {
       headers: {
         'Content-Type': 'image/png'
       }
@@ -54,13 +48,13 @@ export const VehicleForm = ({ onSubmit, vehicleToEdit }) => {
     e.preventDefault();
     try {
       if (vehicleToEdit) {
-        await axios.put(`https://localhost:7003/api/Cars/${vehicleToEdit.carID}`, JSON.stringify(formData), {
+        await axios.put(`http://localhost:5075/api/Cars/${vehicleToEdit.carID}`, JSON.stringify(formData), {
         headers: {
           'Content-Type': 'application/json'
         }
       });
       } else {
-        await axios.post('https://localhost:7003/api/Cars', formData).then(resp => console.log(resp)
+        await axios.post('http://localhost:5075/api/Cars', formData).then(resp => console.log(resp)
       );
         handleUpload(resp.data.carID)
       }
@@ -87,7 +81,7 @@ export const VehicleForm = ({ onSubmit, vehicleToEdit }) => {
   useEffect(() => {
     const fetchModels = async () => {
       try {
-        const response = await axios.get(`https://localhost:7003/api/Models`)
+        const response = await axios.get(`http://localhost:5075/api/Models`)
         setModels(response.data); 
       } catch (error) {
         console.error("Error fetching models:", error);
@@ -108,11 +102,6 @@ export const VehicleForm = ({ onSubmit, vehicleToEdit }) => {
       }}
     >
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label className="form-label">Imagen</label>
-          <input type="file" className="form-control" onChange={handleFileInputChange} />
-        </div>
-
         <div>
           <div className="mb-3">
             <label className="form-label">Modelo</label>

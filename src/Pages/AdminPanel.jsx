@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Footer, Navbar } from "../utilities";
-import { VehicleForm } from "../components/Vehicleform";
+import { VehicleForm } from "../components/VehicleForm";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export const AdminPanel = () => {
   const [showEditForm, setShowEditForm] = useState(false);
@@ -9,7 +10,6 @@ export const AdminPanel = () => {
   const [vehicles, setVehicles] = useState([]);
 
   const handleEdit = (vehicle) => {
-    console.log(vehicle);
     setSelectedVehicle(vehicle);
     setShowEditForm(true);
   };
@@ -17,33 +17,51 @@ export const AdminPanel = () => {
   const handleDelete = async (id) => {
     try {
       await axios.post(
-        `https://localhost:7003/api/Cars/${id}?status=Archivado`
+        `http://localhost:5075/api/Cars/${id}?status=Archivado`
       );
-      const updatedVehicles = vehicles.filter((vehicle) => vehicle.id !== id);
+      const updatedVehicles = vehicles.filter((vehicle) => vehicle.carID !== id);
       setVehicles(updatedVehicles);
+      Swal.fire({
+        icon: 'success',
+        title: '¡Vehículo eliminado!',
+        text: 'El vehículo ha sido eliminado correctamente.',
+      });
     } catch (error) {
       console.error("Error deleting vehicle:", error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Hubo un error al eliminar el vehículo. Por favor, inténtalo de nuevo más tarde.',
+      });
     }
   };
 
-  const handleSubmitForm = async (formData) => {
-    console.log(formData)
-
+  const handleSubmitForm = async () => {
     try {
       if (selectedVehicle) {
-        //await axios.put(`https://localhost:7003/api/Cars/${selectedVehicle.carID}`, formData)
-        //const updatedVehicles = vehicles.map((vehicle) =>
-          //vehicle.carID === selectedVehicle.carID ? formData : vehicle
-        //);
-        //setVehicles(updatedVehicles);
+        setShowEditForm(false);
+        Swal.fire({
+          icon: 'success',
+          title: '¡Vehículo actualizado!',
+          text: 'El vehículo ha sido actualizado correctamente.',
+        });
       } else {
-        //await axios.post("https://localhost:7003/api/Cars", formData);
-        //setVehicles([...vehicles, formData]);
+        setShowEditForm(true);
+        Swal.fire({
+          icon: 'success',
+          title: '¡Vehículo agregado!',
+          text: 'El vehículo ha sido agregado correctamente.',
+        });
       }
-      setShowEditForm(false);
       uploadImage();
+      window.location.reload();
     } catch (error) {
       console.error("Error submitting form:", error);
+      // Swal.fire({
+      //   icon: 'error',
+      //   title: 'Oops...',
+      //   text: 'Hubo un error al procesar el formulario. Por favor, inténtalo de nuevo más tarde.',
+      // });
     }
   };
 
@@ -53,7 +71,6 @@ export const AdminPanel = () => {
 
   const handleAddVehicle = () => {
     setSelectedVehicle(null);
-
     setShowEditForm(true);
   };
 
@@ -61,7 +78,7 @@ export const AdminPanel = () => {
     const getVehicles = async () => {
       try {
         const response = await axios.get(
-          "https://localhost:7003/api/Cars?Status=Disponible&PageNumber=1&PageSize=100"
+          "http://localhost:5075/api/Cars?Status=Disponible&PageNumber=1&PageSize=100"
         );
         setVehicles(response.data);
       } catch (error) {
@@ -115,7 +132,21 @@ export const AdminPanel = () => {
                   </button>
                   <button
                     className="btn btn-danger"
-                    onClick={() => handleDelete(vehicle.carID)}
+                    onClick={() => {
+                      Swal.fire({
+                        title: '¿Estás seguro?',
+                        text: "¡No podrás revertir esto!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Sí, eliminarlo!'
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          handleDelete(vehicle.carID);
+                        }
+                      });
+                    }}
                   >
                     Borrar
                   </button>
